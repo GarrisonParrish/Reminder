@@ -12,7 +12,7 @@ format:
 {   
     "title": "Dinner with Fake-chan",
     "metadata": [
-        "hot", "sexy", "imaginary", "not real", "dating", "virgin"
+        "nice", "sweet", "imaginary", "not real", "dating"
     ],
     "notes": "I can't wait to have dinner with Fake-chan! She's so nice and sweet, I love spending time with her!"
 }
