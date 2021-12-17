@@ -1,11 +1,19 @@
 """Main application."""
 
 import json
+import time  # time... goes on...
+import pync  # allows program to send user notifications to Mac OS operating system
 
 def main() -> None:
     data: dict = input_reminder()
     write_input(data)
+    print(data)
     
+    # test with file 'hello_world.json'
+    returned_data: dict = read_input('/Users/garrisonparrish/Python Applications/reminder-app/data/hello_world.json')
+
+
+
 
 def input_reminder() -> dict:
     """Prompt user for input and returns input as a dictionary."""
@@ -15,8 +23,8 @@ def input_reminder() -> dict:
 
     do_input_metadata: bool = True
     while do_input_metadata:
-        input_meta_tag: str = input("Input meta tag (Type STOP to finish): ")
-        if input_meta_tag == "STOP":
+        input_meta_tag: str = input("Input meta tag: ")
+        if input_meta_tag == "":
             # terminate loop if STOP was entered
             do_input_metadata = False
         else:
@@ -44,6 +52,14 @@ def write_input(reminder_dict: dict) -> None:
         # write to an indent-formatted JSON file with a custom titles
         json.dump(reminder_dict, outfile, indent=4)
     outfile.close()
+
+
+def read_input(filepath: str) -> dict:
+    """Given a valid path to a JSON file, reads that file into a dictionary."""
+    openfile = open(filepath, "r")
+    result: dict = json.load(openfile)
+    openfile.close()
+    return result
 
 
 if __name__ == "__main__":
