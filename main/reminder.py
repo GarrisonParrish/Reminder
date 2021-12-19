@@ -5,14 +5,13 @@ import time  # time... goes on...
 import pync  # allows program to send user notifications to Mac OS operating system
 
 def main() -> None:
-    data: dict = input_reminder()
-    write_input(data)
-    print(data)
+    # data: dict = input_reminder()
+    # write_input(data)
+    # print(data)
     
     # test with file 'hello_world.json'
-    returned_data: dict = read_input('/Users/garrisonparrish/Python Applications/reminder-app/data/hello_world.json')
-
-
+    returned_data: dict = read_input('/Users/garrisonparrish/Python Applications/reminder-app/data/clean keyboard.json')
+    print(returned_data)
 
 
 def input_reminder() -> dict:
