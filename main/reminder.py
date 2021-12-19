@@ -63,6 +63,41 @@ class Reminder:
         self.notes = notes
                 
 
+class Reminders:
+    """List of reminders."""
+    def __init__(self, reminder_list: list[Reminder]):
+        self.reminder_list = reminder_list
+
+    def getReminderByIndex(self, index: int):
+        """Get reminder by index."""
+        return self.reminder_list[index]
+
+    def getReminderByTitle(self, title: str):
+        """Return first reminder with matching title."""
+        for r in self.reminder_list:
+            if r.getTitle() == title:
+                return r
+        # if reminder not found, raise exception
+        raise Exception
+    
+    def getRemindersByMetaTag(self, tag: str):
+        """Return list of reminder with metatag."""
+        results_list: list[Reminder] = []
+        for r in self.reminder_list:
+            if tag in r.getMetadata:
+                results_list.append(r)
+        return results_list
+    
+    def addReminder(self, r: Reminder):
+        """Append reminder to reminder list."""
+        self.reminder_list.append(r)
+    
+
+    def removeReminder(self, r: Reminder):
+        """Remove reminder by title. All duplicates are removed."""
+        filtered_reminders = list(filter(lambda x: r not in x, self.reminder_list))
+        self.reminder_list = filtered_reminders
+        
 
 def input_reminder() -> dict:
     """Prompt user for input and returns input as a dictionary."""
@@ -85,6 +120,11 @@ def input_reminder() -> dict:
     data["notes"] = input_notes
 
     return data
+
+
+def addReminder():
+    """Add reminder to Reminders"""
+
 
 
 def write_input(reminder_dict: dict) -> None:
