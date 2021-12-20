@@ -44,9 +44,13 @@ class Reminder:
         """Append meta tag to end of list."""
         self.metadata.append(tag)
     
-    def popMetaTag(self, tag: str):
+    def popMetaTag(self):
         """Pop meta tag from end of list."""
-        self.metadata.pop(tag)
+        self.metadata.pop()
+    
+    def popMetaTagAtIndex(self, index: int):
+        """Remove meta tag at index."""
+        self.metadata.pop(index)
 
     def replaceMetaTagAtIndex(self, index: int, tag: str):
         """Replace metadata tag string at index in metadata list."""
