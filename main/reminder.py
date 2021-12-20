@@ -4,15 +4,6 @@ import json
 import time  # time... goes on...
 import pync  # allows program to send user notifications to Mac OS operating system
 
-def main() -> None:
-    # data: dict = input_reminder()
-    # write_input(data)
-    # print(data)
-    
-    # test with file 'hello_world.json'
-    returned_data: dict = read_input('/Users/garrisonparrish/Python Applications/reminder-app/data/clean keyboard.json')
-    print(returned_data)
-
 
 class Reminder:
     def __init__(self, title: str, metadata: list[str], notes: str):
@@ -65,7 +56,7 @@ class Reminder:
     def setNotes(self, notes: str):
         """Set reminder notes string."""
         self.notes = notes
-                
+
 
 class Reminders:
     """List of reminders."""
@@ -128,36 +119,3 @@ def input_reminder() -> dict:
     data["notes"] = input_notes
 
     return data
-
-
-def addReminder():
-    """Add reminder to Reminders"""
-
-
-
-def write_input(reminder_dict: dict) -> None:
-    """Writes reminder input to a JSON file."""
-    file_title: str = "title"
-    if reminder_dict["title"] != "":
-        file_title = reminder_dict["title"]  # title of reminder
-    elif reminder_dict["metadata"] != []:
-        file_title = reminder_dict["metadata"][0]  # first meta tag
-    else:
-        file_title = "NO_TITLE"
-
-    with open(f'/Users/garrisonparrish/Python Applications/reminder-app/data/{file_title}.json', "w") as outfile:
-        # write to an indent-formatted JSON file with a custom titles
-        json.dump(reminder_dict, outfile, indent=4)
-    outfile.close()
-
-
-def read_input(filepath: str) -> dict:
-    """Given a valid path to a JSON file, reads that file into a dictionary."""
-    openfile = open(filepath, "r")
-    result: dict = json.load(openfile)
-    openfile.close()
-    return result
-
-
-if __name__ == "__main__":
-    main()
