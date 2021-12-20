@@ -72,6 +72,10 @@ class Reminders:
     def __init__(self, reminder_list: list[Reminder]):
         self.reminder_list = reminder_list
 
+    def getReminders(self):
+        """Get all reminders in the list."""
+        return self.reminder_list
+
     def getReminderByIndex(self, index: int):
         """Get reminder by index."""
         return self.reminder_list[index]
@@ -88,7 +92,7 @@ class Reminders:
         """Return list of reminder with metatag."""
         results_list: list[Reminder] = []
         for r in self.reminder_list:
-            if tag in r.getMetadata:
+            if tag in r.getMetadata():
                 results_list.append(r)
         return results_list
     
@@ -98,8 +102,8 @@ class Reminders:
     
 
     def removeReminder(self, r: Reminder):
-        """Remove reminder by title. All duplicates are removed."""
-        filtered_reminders = list(filter(lambda x: r not in x, self.reminder_list))
+        """Remove reminder by reference. All duplicates are removed."""
+        filtered_reminders = list(filter(lambda x: r != x, self.reminder_list))
         self.reminder_list = filtered_reminders
         
 

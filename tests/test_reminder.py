@@ -1,4 +1,5 @@
-import pytest
+"""Test the Reminder class."""
+
 from main.reminder import *
 
 
