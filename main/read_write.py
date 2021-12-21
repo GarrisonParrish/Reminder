@@ -22,20 +22,26 @@ def write_reminder(r: Reminder):
     write_dict_to_json(data)
 
 
-def write_dict_to_json(reminder_dict: dict) -> None:
+def write_dict_to_json(data: dict) -> None:
     """Writes reminder input to a JSON file."""
     # Title for JSON file
     file_title: str = ""
-    if reminder_dict["title"] != "":
-        file_title = reminder_dict["title"]  # title of reminder
-    elif len(reminder_dict["metadata"]) > 0:
-        file_title = reminder_dict["metadata"][0]  # first meta tag
+    if data["title"] != "":
+        file_title = data["title"]  # title of reminder
+    elif len(data["metadata"]) > 0:
+        file_title = data["metadata"][0]  # first meta tag
     else:
         file_title = "NO_TITLE"
     # write to an indent-formatted JSON file
     with open(f'data/{file_title}.json', "w") as outfile:
-        json.dump(reminder_dict, outfile, indent=4)
+        json.dump(data, outfile, indent=4)
     outfile.close()
+
+
+def read_to_reminder(filepath: str) -> Reminder:
+    """Given a filepath to a JSON file, returns a Reminder with file data."""
+    result: dict = read_json(filepath)
+    return dict_to_reminder(result)
 
 
 def read_json(filepath: str) -> dict:
@@ -44,6 +50,11 @@ def read_json(filepath: str) -> dict:
     result: dict = json.load(openfile)
     openfile.close()
     return result
+
+
+def dict_to_reminder(data: dict) -> Reminder:
+    """Converts a dictionary to a Reminder object."""
+    return Reminder(data["title"], data["metadata"], data["notes"])
 
 
 def input_reminder() -> dict:
