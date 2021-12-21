@@ -2,6 +2,8 @@
 
 from main.reminder import *
 
+# Run module with 'python -m pytest tests/test_reminders.py'
+
 def test_get_reminders():
     r1: Reminder = Reminder("Clean room", ["clean", "room"], "I need to clean my room.")
     r2: Reminder = Reminder("Wash dishes", ["wash", "dishes"], "I need to wash the dishes.")
@@ -84,3 +86,14 @@ def test_remove_reminder():
     
     reminders.removeReminder(r1)
     assert reminders.getReminders() == [r2, r3]
+
+
+def test_remove_reminder_by_title():
+    r1: Reminder = Reminder("Clean room", ["clean", "room"], "I need to clean my room.")
+    r2: Reminder = Reminder("Wash dishes", ["wash", "dishes"], "I need to wash the dishes.")
+    r3: Reminder = Reminder("Mop floor", ["mop", "floor"], "I need to mop the floor.")
+
+    reminders: Reminders = Reminders([r1, r2, r3])
+    
+    reminders.removeReminderByTitle("Wash dishes")
+    assert reminders.getReminders() == [r1, r3]

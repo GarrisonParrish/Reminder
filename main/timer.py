@@ -1,6 +1,7 @@
 """Countdown timer."""
 
 import time
+from main.read_write import read_input, read_json
 from reminder import *
 from notif import *
 
@@ -8,7 +9,7 @@ from notif import *
 def main():
     # start_timer()
     # read JSON reminder object into dict
-    test_reminder = read_input('/Users/garrisonparrish/Python Applications/reminder-app/data/clean keyboard.json')
+    test_reminder = read_json('/Users/garrisonparrish/Python Applications/reminder-app/data/clean keyboard.json')
     print(test_reminder)
 
     test_reminder_title = test_reminder["title"]

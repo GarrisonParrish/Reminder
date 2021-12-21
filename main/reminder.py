@@ -1,11 +1,8 @@
-"""Main application."""
-
-import json
-import time  # time... goes on...
-import pync  # allows program to send user notifications to Mac OS operating system
+"""Reminder class and Reminders container class."""
 
 
 class Reminder:
+    """Reminder with title, metadata tag list, and notes."""
     def __init__(self, title: str, metadata: list[str], notes: str):
         self.title = title
         self.metadata = metadata
@@ -96,26 +93,8 @@ class Reminders:
         """Remove reminder by reference. All duplicates are removed."""
         filtered_reminders = list(filter(lambda x: r != x, self.reminder_list))
         self.reminder_list = filtered_reminders
-        
-
-def input_reminder() -> dict:
-    """Prompt user for input and returns input as a dictionary."""
-    data = {}  # dictionary that will be written to a JSON file
-    input_name: str = input("Title for this reminder: ")
-    input_metadata: list[str] = []
-
-    do_input_metadata: bool = True
-    while do_input_metadata:
-        input_meta_tag: str = input("Input meta tag: ")
-        if input_meta_tag == "":
-            # terminate loop if STOP was entered
-            do_input_metadata = False
-        else:
-            input_metadata.append(input_meta_tag)
-    input_notes: str = input("Notes for this reminder: ")
-
-    data["title"] = input_name
-    data["metadata"] = input_metadata
-    data["notes"] = input_notes
-
-    return data
+    
+    def removeReminderByTitle(self, title: str):
+        """Remove reminder by reference. All duplicates are removed."""
+        filtered_reminders = list(filter(lambda x: title != x.getTitle(), self.reminder_list))
+        self.reminder_list = filtered_reminders

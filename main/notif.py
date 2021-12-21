@@ -1,16 +1,16 @@
+"""Push notification methods."""
+
 import time
-import pync
+import pync  # allows program to send user notifications to Mac OS operating system
+from reminder import Reminder
 
 
-def notify(reminder_title: str, reminder_notes: str) -> None:
-    pync.notify(reminder_notes, title="Reminder", subtitle=reminder_title)
-    # pync.notify("Hello World!", subtitle="Hey there")  # appIcon does not appear to work
-    # pync.notify('Hello World', open='http://github.com/')
-    # pync.notify('Hello World', activate='com.apple.Safari')
+def notify(r: Reminder) -> None:
+    pync.notify(r.getNotes(), title="Reminder", subtitle=r.getTitle())
 
 
-def notify_delay(interval: int, reminder_str: str) -> None:
+def notify_delay(r: Reminder, interval: int) -> None:
     """Waits a specified number of seconds - interval: wait time (seconds)"""
     time.sleep(interval)
     # get title from json file
-    pync.notify(reminder_str, title="Reminder")
+    pync.notify(r.getNotes(), title="Reminder", subtitle=r.getTitle())
