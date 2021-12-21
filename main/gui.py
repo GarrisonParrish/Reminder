@@ -55,7 +55,7 @@ notes_entry.pack()
 # clear entry fields
 def submit_reminder():
     # Note: metadata is comma-separated, turn into list
-    metadata_list: list[str] = re.split(",|, ", metadata)
+    metadata_list: list[str] = re.split(",|, ", metadata.get())
     # Create a Reminder object containing form data
     r: Reminder = Reminder(title.get(), metadata_list, notes.get())
     # Clear entries
