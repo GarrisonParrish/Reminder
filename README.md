@@ -28,3 +28,9 @@ format:
 - GUI
 - Fix local imports
 - Once UX has been finalized, refactor code to eliminate redundant methods
+
+### Note: 
+Added re library (regular expressions) so metadata entries can be separated with commas with or without a space following the comma. May be overkill and will likely slow down the program.
+
+### Note: 
+in its current state, the app takes entry data, creates a Reminder object with this data, and writes to a .json file. Writing to a .json file involves converting the Remminder data back into a dictionary and then writing that dictionary. Currently it would be easier simply to create a dict and use that, but the Remminder object will come in handy when more features (edit, delete, sort) are added.
