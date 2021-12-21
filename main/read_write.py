@@ -1,5 +1,7 @@
 """Methods for converting Reminder to JSON, reading to and writing from disk."""
 
+# TODO: Once UX has been finalized, refactor code to eliminate redundant methods
+
 import json
 from reminder import *
 

@@ -26,4 +26,5 @@ format:
 - Some way to measure time when computer is off (compare to system time?)
 - Add support for notifications when time is reached ( use pync.notify() )
 - GUI
-- - Fix local imports
+- Fix local imports
+- Once UX has been finalized, refactor code to eliminate redundant methods
