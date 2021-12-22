@@ -77,7 +77,7 @@ class Reminders:
         raise Exception
     
     def getRemindersByMetaTag(self, tag: str):
-        """Return list of reminder with metatag."""
+        """Return list of reminders with metatag."""
         results_list: list[Reminder] = []
         for r in self.reminder_list:
             if tag in r.getMetadata():
