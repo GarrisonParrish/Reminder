@@ -53,7 +53,17 @@ notes_entry.pack()
 # Get title, metadata, and notes, put in Reminder
 # Write reminder to json file
 # clear entry fields
+
+def validate(input: StringVar):
+    if input == "":
+        return False
+    else:
+        return True
+
+
 def submit_reminder():
+    if not validate(title.get()):
+        return
     # Note: metadata is comma-separated, turn into list
     metadata_list: list[str] = re.split(",|, ", metadata.get())
     # Create a Reminder object containing form data

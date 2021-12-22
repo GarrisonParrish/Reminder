@@ -4,6 +4,8 @@
 class Reminder:
     """Reminder with title, metadata tag list, and notes."""
     def __init__(self, title: str, metadata: list[str], notes: str):
+        if title == "":
+            raise Exception("Reminder must have a title.")
         self.title = title
         self.metadata = metadata
         self.notes = notes
