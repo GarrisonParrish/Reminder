@@ -1,10 +1,13 @@
+"""Application window for inputting a reminder."""
+
 import tkinter as tk
 from tkinter import StringVar
 from reminder import Reminder
 import re  # Note: regex might be overkill for this purpose
 from read_write import write_reminder
 
-window = tk.Tk()  # GUI window
+root = tk.Tk()  # GUI window
+root.title("Reminder App")
 
 header = tk.Label(text="Reminder")  # header label
 # Add to the window and size window as small as possible to match label
@@ -15,7 +18,7 @@ title_label = tk.Label(text="Enter title")
 title_label.pack()
 # Entry for title
 title = StringVar()
-title_entry = tk.Entry(window, textvariable=title)
+title_entry = tk.Entry(root, textvariable=title)
 # Listen for changes to title variable
 def title_has_changed():
     print("Title changed")
@@ -28,7 +31,7 @@ metadata_label = tk.Label(text="Enter comma-separated metadata tags")
 metadata_label.pack()
 # Entry for meta tag
 metadata = StringVar()
-metadata_entry = tk.Entry(window, textvariable=metadata)
+metadata_entry = tk.Entry(root, textvariable=metadata)
 # Listen for changes to meta_tag variable
 def metadata_has_changed():
     print("Meta changed")
@@ -41,7 +44,7 @@ notes_label = tk.Label(text="Enter notes")
 notes_label.pack()
 # Entry for notes
 notes = StringVar()
-notes_entry = tk.Entry(window, textvariable=notes)
+notes_entry = tk.Entry(root, textvariable=notes)
 # Listen for changes to notes variable
 def notes_has_changed():
     print("Notes changed")
@@ -76,7 +79,7 @@ def submit_reminder():
     write_reminder(r)
     
 
-submit_button = tk.Button(window, text="Submit Reminder", default="active", command=submit_reminder)
+submit_button = tk.Button(root, text="Submit Reminder", default="active", command=submit_reminder)
 submit_button.pack()
 
-window.mainloop()  # Run the GUI loop
+root.mainloop()  # Run the GUI loop
