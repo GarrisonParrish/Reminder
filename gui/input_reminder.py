@@ -11,6 +11,7 @@ from main.read_write import write_reminder
 class InputReminder(tk.Tk):
     """Separate window to input reminder."""
     def __init__(self):
+        """Create window to input reminder."""
         # Initialize superclass
         super().__init__()
         ###############################################################
@@ -44,15 +45,11 @@ class InputReminder(tk.Tk):
         self.notes_entry = tk.Entry(self, textvariable=self.notes)
         self.notes_entry.pack()
 
-        # Button for submitting reminder
-        # TODO: 
-        # Get title, metadata, and notes, put in Reminder
-        # Write reminder to json file
-        # clear entry fields
         self.submit_button = tk.Button(self, text="Submit Reminder", default="active", command=self.submit_reminder)
         self.submit_button.pack()
 
     def validate(self, input):
+        """Validate entry for null input."""
         if input == "":
             return False
         else:
@@ -61,6 +58,7 @@ class InputReminder(tk.Tk):
         # NOTE: stringvars are null regardless of input. Probably an issue with how the attribute is being saved and updated
 
     def submit_reminder(self):
+        """Submit entry data to a reminder and write to memory."""
         if not self.validate(self.title.get()):
             return
         # Note: metadata is comma-separated, turn into list
@@ -73,3 +71,8 @@ class InputReminder(tk.Tk):
         self.notes.set("")
         # Write the reminder to a json file
         write_reminder(r)
+        self.quit()
+    
+    def quit(self):
+        """Destroy the current window."""
+        self.destroy()
