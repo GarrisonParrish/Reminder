@@ -3,6 +3,8 @@
 import tkinter as tk
 from gui.input_reminder import InputReminder
 
+# Run with 'python -m gui.root'
+
 class App(tk.Tk):
     """Inherits from tk.Tk class."""
     def __init__(self):
