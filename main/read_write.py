@@ -3,7 +3,7 @@
 # TODO: Once UX has been finalized, refactor code to eliminate redundant methods
 
 import json
-from reminder import *
+from main.reminder import Reminder
 
 def main() -> None:
     # r: Reminder = Reminder("Fold laundry", ["fold", "laundry"], "I need to fold the laundry.")

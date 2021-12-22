@@ -1,7 +1,7 @@
 """Root application window."""
 
 import tkinter as tk
-from input_reminder import InputReminder
+from gui.input_reminder import InputReminder
 
 class App(tk.Tk):
     """Inherits from tk.Tk class."""

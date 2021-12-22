@@ -2,8 +2,8 @@
 
 import time
 from main.read_write import read_input, read_json
-from reminder import *
-from notif import *
+# from main.reminder import Reminder
+from main.notif import *
 
 
 def main():

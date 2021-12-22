@@ -2,7 +2,7 @@
 
 import time
 import pync  # allows program to send user notifications to Mac OS operating system
-from reminder import Reminder
+from main.reminder import Reminder
 # from read_write import read_to_reminder
 
 
