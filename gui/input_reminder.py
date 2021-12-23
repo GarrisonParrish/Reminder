@@ -8,14 +8,11 @@ from main.read_write import write_reminder
 
 # NOTE: must always specify parent for each Tkinter class
 
-class InputReminder:
-    def __init__(self):
+class InputReminder(tk.Frame):
+    def __init__(self, master):
         """Create window to input reminder."""
-        # Initialize superclass
-        super().__init__()
-        ###############################################################
-        self.title("Reminder App")
-        # NOTE: Always include self as parents
+        tk.Frame.__init__(self, master)
+        # NOTE: Always include self as parent
         self.header = tk.Label(self, text="Reminder")  # header label
         # Add to the window and size window as small as possible to match label
         self.header.pack()
@@ -70,8 +67,9 @@ class InputReminder:
         self.notes.set("")
         # Write the reminder to a json file
         write_reminder(r)
-        self.quit()
+        self.exit()
     
-    def quit(self):
+    def exit(self):
         """Destroy the current window."""
-        self.destroy()
+        from gui.start_frame import StartFrame
+        self.master.switch_frame(StartFrame)
