@@ -33,4 +33,4 @@ Added re library (regular expressions) so metadata entries can be separated with
 in its current state, the app takes entry data, creates a Reminder object with this data, and writes to a .json file. Writing to a .json file involves converting the Reminder data back into a dictionary and then writing that dictionary. Currently it would be easier simply to create a dict and use that, but the Reminder object will come in handy when more features (edit, delete, sort) are added.
 
 ### Note:
-Currently the gui classes inherit from tk.Frame. Objects inheriting from Frame must be given a root/master, such as tk.Tk().
+Currently the gui classes inherit from tk.Frame. Objects inheriting from Frame must be given a root/master, such as tk.Tk(). MainApp fulfills the role of tk.Tk, acting as the main application window and calling a method when the current frame needs to be switched. When a frame needs to be switched, it imports the Frame subclass that defines the new frame and calls its master, MainApp, to switch the frame. MainApp.switch_frame creates the new frame, destroys the old frame, and packs the new frame.
