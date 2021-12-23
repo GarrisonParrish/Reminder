@@ -8,8 +8,7 @@ from main.read_write import write_reminder
 
 # NOTE: must always specify parent for each Tkinter class
 
-class InputReminder(tk.Tk):
-    """Separate window to input reminder."""
+class InputReminder:
     def __init__(self):
         """Create window to input reminder."""
         # Initialize superclass
