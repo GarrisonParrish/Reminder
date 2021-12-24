@@ -34,15 +34,12 @@ class StartFrame(tk.Frame):
     
     def open(self):
         """Open the application (go to home page window)"""
-        print("Opened!")
-        # TODO: implement (destroy current frame, build the home page frame inside the root window)
         from gui.input_reminder import InputReminder
         self.master.switch_frame(InputReminder)
     
     def  exit(self):
         """Exit the application"""
         self.master.destroy()
-    
 
 
 if __name__ == "__main__":

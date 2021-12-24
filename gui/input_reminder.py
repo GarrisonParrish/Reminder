@@ -36,13 +36,15 @@ class InputReminder(tk.Frame):
         # Label for notes entry
         self.notes_label = tk.Label(self, text="Enter notes")
         self.notes_label.pack()
-        # Entry for notes
-        self.notes = StringVar(self)
-        self.notes_entry = tk.Entry(self, textvariable=self.notes)
-        self.notes_entry.pack()
-
-        self.submit_button = tk.Button(self, text="Submit Reminder", default="active", command=self.submit_reminder)
-        self.submit_button.pack()
+        # Textbox for notes
+        self.notes_textbox = tk.Text(self, height=10, width=50, wrap="word")
+        self.notes_textbox.pack()
+        # Submit button
+        self.submit_button = tk.Button(self, text="Submit", command=self.submit_reminder)
+        self.submit_button.pack() 
+        # Exit button
+        self.exit_button = tk.Button(self, text="Exit", command=self.exit)
+        self.exit_button.pack()
 
     def validate(self, input):
         """Validate entry for null input."""
@@ -51,20 +53,18 @@ class InputReminder(tk.Frame):
         else:
             return True
 
-        # NOTE: stringvars are null regardless of input. Probably an issue with how the attribute is being saved and updated
-
     def submit_reminder(self):
-        """Submit entry data to a reminder and write to memory."""
+        """Submit entry data to a reminder and write to disk."""
         if not self.validate(self.title.get()):
             return
         # Note: metadata is comma-separated, turn into list
         metadata_list: list[str] = re.split(",|, ", self.metadata.get())
         # Create a Reminder object containing form data
-        r: Reminder = Reminder(self.title.get(), metadata_list, self.notes.get())
+        r: Reminder = Reminder(self.title.get(), metadata_list, self.notes_textbox.get('1.0', 'end'))
         # Clear entries
         self.title.set("")
         self.metadata.set("")
-        self.notes.set("")
+        self.notes_textbox.delete('1.0', 'end')
         # Write the reminder to a json file
         write_reminder(r)
         self.exit()
