@@ -3,14 +3,15 @@
 # TODO: Once UX has been finalized, refactor code to eliminate redundant methods
 
 import json
+from main.constants import REMINDER_FILETYPE
 from main.reminder import Reminder
+from os import listdir
 
 def main() -> None:
     # r: Reminder = Reminder("Fold laundry", ["fold", "laundry"], "I need to fold the laundry.")
     # write_reminder(r)
     # print("Done!")
-    returned_data: dict = read_json('data/Fold laundry.json')
-    print(returned_data)
+    print(read_filenames("data"))
 
 
 def write_reminder(r: Reminder):
@@ -81,6 +82,16 @@ def input_reminder() -> dict:
 
     return data
 
+def read_filenames(directory_path: str):
+    """Given a path to a directory, returns a list of all filenames in the directory."""
+    entries_list = listdir(directory_path)
+    return_list: list[str] = []
+    for item in entries_list:
+        if REMINDER_FILETYPE in item:
+            # item is a .json file
+            filename: str = item.removesuffix(REMINDER_FILETYPE)
+            return_list.append(filename)
+    return return_list
 
 if __name__ == "__main__":
     main()

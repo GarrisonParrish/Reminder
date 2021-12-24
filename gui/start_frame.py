@@ -32,7 +32,7 @@ class StartFrame(tk.Frame):
         # Open app button
         self.button_frame.open_button = tk.Button(
             self.button_frame,
-            text="New",
+            text="Open",
             command=self.open,
             padx=15
         )
@@ -49,16 +49,11 @@ class StartFrame(tk.Frame):
     
     def open(self):
         """Open the application (go to home page window)"""
-        from gui.input_reminder import InputReminder
-        self.master.switch_frame(InputReminder)
+        #from gui.input_reminder import InputReminder
+        #self.master.switch_frame(InputReminder)
+        from gui.home_frame import HomeFrame
+        self.master.switch_frame(HomeFrame)
     
     def  exit(self):
         """Exit the application"""
         self.master.destroy()
-
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.title("Reminder App")
-    StartFrame(root).pack()
-    root.mainloop()

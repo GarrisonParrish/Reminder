@@ -9,7 +9,7 @@ from main.read_write import write_reminder
 
 # NOTE: must always specify parent for each Tkinter class
 
-class InputReminder(tk.Frame):
+class InputReminderFrame(tk.Frame):
     def __init__(self, master):
         """Create window to input reminder."""
         tk.Frame.__init__(self, master)
@@ -86,5 +86,5 @@ class InputReminder(tk.Frame):
     
     def exit(self):
         """Destroy the current window."""
-        from gui.start_frame import StartFrame
-        self.master.switch_frame(StartFrame)
+        from gui.home_frame import HomeFrame
+        self.master.switch_frame(HomeFrame)
