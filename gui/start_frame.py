@@ -1,7 +1,7 @@
 """Root application window."""
 
 import tkinter as tk
-from tkinter.constants import NW
+from tkinter.constants import LEFT, NW
 from main.constants import APP_TITLE, FEELS_GOOD_PATH
 from PIL import Image, ImageTk
 
@@ -27,10 +27,25 @@ class StartFrame(tk.Frame):
 
         self.canvas.create_image(10, 10, anchor=NW, image=self.new_image)
         
-        self.open_button = tk.Button(self, text="New", command=self.open)
-        self.open_button.pack()
-        self.exit_button = tk.Button(self, text="Exit", command=self.exit)
-        self.exit_button.pack()
+        # Frame for buttons
+        self.button_frame = tk.Frame(self, pady=10)
+        # Open app button
+        self.button_frame.open_button = tk.Button(
+            self.button_frame,
+            text="New",
+            command=self.open,
+            padx=15
+        )
+        self.button_frame.open_button.pack(side=LEFT)
+        # Exit app button
+        self.button_frame.exit_button = tk.Button(
+            self.button_frame,
+            text="Exit",
+            command=self.exit,
+            padx=15
+        )
+        self.button_frame.exit_button.pack(side=LEFT)
+        self.button_frame.pack()
     
     def open(self):
         """Open the application (go to home page window)"""

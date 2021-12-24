@@ -2,6 +2,7 @@
 
 import tkinter as tk
 from tkinter import StringVar
+from tkinter.constants import LEFT
 from main.reminder import Reminder
 import re  # Note: regex might be overkill for this purpose
 from main.read_write import write_reminder
@@ -39,12 +40,26 @@ class InputReminder(tk.Frame):
         # Textbox for notes
         self.notes_textbox = tk.Text(self, height=10, width=50, wrap="word")
         self.notes_textbox.pack()
+
+        # Frame for buttons
+        self.button_frame = tk.Frame(self, pady=10)
         # Submit button
-        self.submit_button = tk.Button(self, text="Submit", command=self.submit_reminder)
-        self.submit_button.pack() 
+        self.button_frame.submit_button = tk.Button(
+            self.button_frame,
+            text="Submit",
+            command=self.submit_reminder,
+            padx=15
+        )
+        self.button_frame.submit_button.pack(side=LEFT) 
         # Exit button
-        self.exit_button = tk.Button(self, text="Exit", command=self.exit)
-        self.exit_button.pack()
+        self.button_frame.exit_button = tk.Button(
+            self.button_frame,
+            text="Exit",
+            command=self.exit,
+            padx=15
+        )
+        self.button_frame.exit_button.pack(side=LEFT)
+        self.button_frame.pack()
 
     def validate(self, input):
         """Validate entry for null input."""
