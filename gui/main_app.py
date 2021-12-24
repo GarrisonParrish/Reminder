@@ -12,10 +12,10 @@ class MainApp(tk.Tk):
         self.frame = None
         self.switch_frame(StartFrame)
     
-    def switch_frame(self, frame_class):
-        """Switch current frame in application window."""
+    def switch_frame(self, frame_class, *args):
+        """Switch current frame in application window. Optional arguments for frame."""
         # Call class constructor, giving self as parent/master
-        new_frame = frame_class(self)
+        new_frame = frame_class(self, *args)
         if self.frame is not None:
             self.frame.destroy()
         # pack new frame

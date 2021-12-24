@@ -19,8 +19,8 @@ format:
 ``
 
 ### TODO:
-- Super advanced version looks up by keywords (can have title and any metadata in any order)
-- Multithreading or something to allow app to run in background
+- Search by keywords (title and metadata in any order)
+- Set time to send a push notification to system
 - Some way to measure time when computer is off (compare to system time?)
 - Add support for notifications when time is reached ( use pync.notify() )
 - GUI

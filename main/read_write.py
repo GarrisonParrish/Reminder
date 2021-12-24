@@ -82,15 +82,18 @@ def input_reminder() -> dict:
 
     return data
 
-def read_filenames(directory_path: str):
-    """Given a path to a directory, returns a list of all filenames in the directory."""
+def read_filenames(directory_path: str, exclude_suffix: bool = False):
+    """Given a path to a directory, returns a list of all filenames in the directory. Optionally exclude suffix."""
     entries_list = listdir(directory_path)
     return_list: list[str] = []
     for item in entries_list:
         if REMINDER_FILETYPE in item:
             # item is a .json file
-            filename: str = item.removesuffix(REMINDER_FILETYPE)
-            return_list.append(filename)
+            if exclude_suffix:
+                filename: str = item.removesuffix(REMINDER_FILETYPE)
+                return_list.append(filename)
+            else:
+                return_list.append(item)
     return return_list
 
 if __name__ == "__main__":
