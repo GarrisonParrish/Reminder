@@ -1,0 +1,9 @@
+{
+    "title": "Test reminder",
+    "metadata": [
+        "test",
+        " reminder",
+        "testing"
+    ],
+    "notes": "I am testing this reminder.\nNewline.\n\nDouble newline.\n"
+}

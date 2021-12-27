@@ -1,0 +1,11 @@
+{
+    "title": "spacing after commas test",
+    "metadata": [
+        "start",
+        " space",
+        "nospace",
+        " space",
+        "nospace"
+    ],
+    "notes": "the first \"space\" means there is a space immediately before it.\n"
+}

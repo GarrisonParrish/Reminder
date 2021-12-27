@@ -1,0 +1,10 @@
+{
+    "title": "testing spacing without regex",
+    "metadata": [
+        "start",
+        "nospace",
+        "nospace",
+        "nospace"
+    ],
+    "notes": "Testing no space\n"
+}

@@ -3,6 +3,7 @@
 # TODO: Once UX has been finalized, refactor code to eliminate redundant methods
 
 import json
+import os
 from main.constants import REMINDER_FILETYPE
 from main.reminder import Reminder
 from os import listdir
@@ -11,7 +12,8 @@ def main() -> None:
     # r: Reminder = Reminder("Fold laundry", ["fold", "laundry"], "I need to fold the laundry.")
     # write_reminder(r)
     # print("Done!")
-    print(read_filenames("data"))
+    # print(read_filenames("data"))
+    delete_reminder("Blow leaves")
 
 
 def write_reminder(r: Reminder):
@@ -95,6 +97,20 @@ def read_filenames(directory_path: str, exclude_suffix: bool = False):
             else:
                 return_list.append(item)
     return return_list
+
+def delete_reminder(reminder_name: str):
+    """Given a reminder name, remove it from the data directory."""
+    reminder_fullpath: str = "data/" + reminder_name + REMINDER_FILETYPE
+    if os.path.exists(reminder_fullpath):
+        os.remove(reminder_fullpath)
+    else:
+        raise Exception("Reminder does not exist.")\
+
+def edit_reminder(r: Reminder):
+    """Given a reminder with matching filename to a file in memory, delete the old file and write a new file."""
+    delete_reminder(r.getTitle())
+    write_reminder(r)
+
 
 if __name__ == "__main__":
     main()
