@@ -2,9 +2,9 @@
     "title": "testing spacing without regex",
     "metadata": [
         "start",
-        "nospace",
-        "nospace",
-        "nospace"
+        " nospace",
+        " nospace",
+        " nospace"
     ],
-    "notes": "Testing no space\n"
+    "notes": "Testing no space\nTesting edit\n"
 }

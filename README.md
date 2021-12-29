@@ -41,3 +41,6 @@ main/read_write.py is kind of a mess. Consider making it into a class to better 
 
 ### Note:
 Editing the reminder uses InputReminderFrame, but the title, metadata, and notes are set to the values specified in the constructor call.
+
+### Note:
+Reminders are organized by filename. This will eventually result in a ton of very small .json files, which can make retrieval and file navigation very difficult. Writing to disk may be bad practice in this case, and another issue is the fact that reminder titles with a '/' character will raise an error when attempting to write.

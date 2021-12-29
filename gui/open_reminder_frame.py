@@ -44,7 +44,7 @@ class OpenReminderFrame(tk.Frame):
         )
         self.title_label.pack()
         # Metadata for reminder
-        self.metadata_label = tk.Label(self, text=self.reminder.getMetadata())
+        self.metadata_label = tk.Label(self, text=self.populate_meta_entry())
         self.metadata_label.pack()
         # Notes for reminder
         self.notes_label = tk.Label(self, text=self.reminder.getNotes(), width=30, justify=LEFT)
@@ -69,8 +69,11 @@ class OpenReminderFrame(tk.Frame):
         )
         self.nav_button_frame.back_button.pack(side=LEFT)
         self.nav_button_frame.pack()
-
     
+    def populate_meta_entry(self) -> str:
+        """Populate meta entry with comma-separated data."""
+        return ", ".join(self.reminder.getMetadata())
+
     def new_reminder(self):
         """Switch to input reminder frame."""
         from gui.input_reminder_frame import InputReminderFrame
@@ -88,7 +91,6 @@ class OpenReminderFrame(tk.Frame):
     
     def edit_reminder(self):
         """Edit current reminder."""
-        print("Placeholder: Entered edit method!")
         from gui.input_reminder_frame import InputReminderFrame
         self.master.switch_frame(
             InputReminderFrame,

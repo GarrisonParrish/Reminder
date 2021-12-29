@@ -29,7 +29,7 @@ class InputReminderFrame(tk.Frame):
         self.metadata_label = tk.Label(self, text="Enter comma-separated metadata tags")
         self.metadata_label.pack()
         # Entry for meta tag
-        self.metadata = StringVar(self, value=metadata_val)
+        self.metadata = StringVar(self, value=self.populate_meta_entry(metadata_val))
         self.metadata_entry = tk.Entry(self, textvariable=self.metadata)
         self.metadata_entry.pack()
 
@@ -68,6 +68,12 @@ class InputReminderFrame(tk.Frame):
         """Set value of notes textbox."""
         self.notes_textbox.delete(1.0, END)
         self.notes_textbox.insert(END, notes_val)
+    
+    def populate_meta_entry(self, metadata_val: list[str]) -> str:
+        """Populate meta entry with comma-separated data."""
+        if metadata_val is not None:
+            return ", ".join(metadata_val)
+        return ""
 
     def validate(self, input):
         """Validate entry for null input."""
