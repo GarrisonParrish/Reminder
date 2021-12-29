@@ -10,11 +10,11 @@ format:
 
 ``
 {   
-    "title": "Dinner with Fake-chan",
+    "title": "Example Title",
     "metadata": [
-        "imaginary", "not real", "dating",
+        "example", "demo", "reminder app",
     ],
-    "notes": "I can't wait to have dinner with Fake-chan! She's so nice and sweet, I love spending time with her!"
+    "notes": "This is an example of a reminder./nNewline./n/nDouble newline."
 }
 ``
 
